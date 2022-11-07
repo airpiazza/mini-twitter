@@ -2,14 +2,19 @@ package app;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +31,8 @@ public class Controller implements Initializable {
     private Button addGroupButton;
     @FXML
     private TreeView treeView;
+    @FXML
+    private Button openUserViewButton;
 
     String userID;
 
@@ -63,7 +70,7 @@ public class Controller implements Initializable {
 
         parent.getId();
 
-        System.out.println(userID);
+        System.out.println(userID + " added");
     }
 
     public void addGroup(ActionEvent event) {
@@ -79,14 +86,26 @@ public class Controller implements Initializable {
 
         parent.getId();
 
-        System.out.println(groupID);
+        System.out.println(groupID + " added");
+    }
+
+    public void openUserView(ActionEvent event) throws IOException {
+        TreeItem <String> treeItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+
+        if(treeItem != null) {
+            Parent root = FXMLLoader.load(getClass().getResource("user.fxml"));
+            Stage userStage = new Stage();
+            userStage.setTitle(treeItem.getValue());
+            userStage.setScene(new Scene(root));
+            userStage.show();
+        }
     }
 
     public void itemClicked() {
         TreeItem <String> treeItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
 
         if(treeItem != null) {
-            System.out.println(treeItem.getValue());
+            System.out.println(treeItem.getValue() + " clicked");
 
             Component treeNode = treeItemComponentMap.get(treeItem);
 
