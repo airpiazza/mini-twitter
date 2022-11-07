@@ -9,7 +9,7 @@ public class Driver extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = AdminUISingleton.getInstance().getRoot();
+        Parent root = Singleton.getInstance().getRoot();
         primaryStage.setTitle("Mini Twitter");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

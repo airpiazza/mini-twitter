@@ -5,18 +5,18 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
-public class AdminUISingleton {
-    private static AdminUISingleton instance = null;
+public class Singleton {
+    private static Singleton instance = null;
 
     private Parent root;
 
-    private AdminUISingleton() throws IOException {
+    private Singleton() throws IOException {
         root = FXMLLoader.load(getClass().getResource("admin.fxml"));
     }
 
-    public static AdminUISingleton getInstance() throws IOException {
+    public static Singleton getInstance() throws IOException {
         if(instance == null) {
-            instance = new AdminUISingleton();
+            instance = new Singleton();
         }
 
         return instance;

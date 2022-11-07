@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
    <children>
-      <TreeView layoutX="31.0" layoutY="61.0" prefHeight="309.0" prefWidth="243.0" />
+      <TreeView fx:id="treeView" layoutX="31.0" layoutY="61.0" onContextMenuRequested="#itemClicked" onMouseClicked="#itemClicked" prefHeight="309.0" prefWidth="243.0" />
       <TextField fx:id="userIDTextField" layoutX="300.0" layoutY="61.0" prefHeight="25.0" prefWidth="149.0" promptText="User ID" />
       <TextField fx:id="groupIDTextField" layoutX="300.0" layoutY="119.0" promptText="Group ID" />
       <Button fx:id="addUserButton" layoutX="491.0" layoutY="61.0" mnemonicParsing="false" onAction="#addUser" text="Add User" />
