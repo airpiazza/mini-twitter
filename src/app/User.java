@@ -1,13 +1,20 @@
 package app;
 
+import javafx.scene.control.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private Subject subject;
+    private ConcreteSubject subject;
+
     private List<User> following;
+
     private List<Observer> observers;
+
     private String userId;
+
+    private ListView<String> newsFeedListView;
 
     public User(String userId) {
         this.subject = new ConcreteSubject(userId);
@@ -26,11 +33,27 @@ public class User {
         return userId;
     }
 
+    public List<User> getFollowing() {
+        return following;
+    }
+
+    public ListView<String> getNewsFeedListView() {
+        return newsFeedListView;
+    }
+
+    public void setNewsFeedListView(ListView<String> newsFeedListView) {
+        this.newsFeedListView = newsFeedListView;
+    }
+
     public void followUser(User otherUser) {
         Observer observer = new ConcreteObserver(this.getUserId(), otherUser.getSubject());
         observers.add(observer);
         if(!otherUser.equals(this)) {
             following.add(otherUser);
         }
+    }
+
+    public void postTweet(String newTweet) {
+        this.subject.setLatestTweet(newTweet);
     }
 }

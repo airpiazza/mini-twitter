@@ -60,6 +60,10 @@ public class Controller implements Initializable {
     public void addUser(ActionEvent event) {
         userID = userIDTextField.getText();
 
+        User newUser = new User(userID);
+
+        UserDatabaseSingleton.getInstance().getUserMap().put(userID, newUser);
+
         TreeItem<String> userItem = new TreeItem<>(userID);
 
         Component user = new Leaf(userItem);

@@ -22,7 +22,7 @@ public class ConcreteSubject implements Subject{
     }
 
     public void setLatestTweet(String latestTweet) {
-        this.latestTweet = this.getUserId() + ": " + latestTweet;
+        this.latestTweet = latestTweet;
         notifyObservers();
     }
 

@@ -1,7 +1,5 @@
 package app;
 
-import java.util.List;
-
 public class ConcreteObserver implements Observer {
     private String latestTweet;
 
@@ -25,5 +23,8 @@ public class ConcreteObserver implements Observer {
     @Override
     public void update(String latestTweet) {
         this.latestTweet = latestTweet;
+
+        User thisUser = UserDatabaseSingleton.getInstance().getUserMap().get(this.getUserId());
+        thisUser.getNewsFeedListView().getItems().add(this.latestTweet);
     }
 }

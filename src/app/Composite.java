@@ -18,11 +18,10 @@ public class Composite implements Component {
 
     @Override
     public TreeItem<String> getId() {
+        parent.getChildren().clear();
         for (Component child:
              children) {
-            if(!parent.getChildren().contains(child.getId())) {
-                parent.getChildren().add(child.getId());
-            }
+            parent.getChildren().add(child.getId());
         }
 
         return parent;
