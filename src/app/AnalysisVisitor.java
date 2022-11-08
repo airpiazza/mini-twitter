@@ -29,20 +29,24 @@ public class AnalysisVisitor implements Visitor {
 
     @Override
     public int visit(PositivePercentage positivity) {
-        double positiveMessages = 0;
+        double positiveWordCount = 0;
         double totalWords = 0;
         for(String message : MessageDatabaseSingleton.getInstance().getMessageList()) {
             String[] words = message.split(" ");
+            totalWords += words.length - 1;
             for(String word : words) {
-                totalWords++;
-                for(String positiveWord : words) {
-                    if(word.contains(positiveWord)) {
-                        positiveMessages++;
+                for(String positiveWord : positiveWords) {
+                    if(word.equalsIgnoreCase(positiveWord)) {
+                        System.out.println("word: "+ word);
+                        positiveWordCount++;
                     }
                 }
             }
         }
 
-        return (int) Math.round(positiveMessages/totalWords);
+        System.out.println("Positive Words: " + positiveWordCount);
+        System.out.println("Total Words: " + totalWords);
+
+        return (int) Math.round((positiveWordCount/totalWords) * 100);
     }
 }

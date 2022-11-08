@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +14,8 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,6 +37,14 @@ public class Controller implements Initializable {
     private TreeView treeView;
     @FXML
     private Button openUserViewButton;
+    @FXML
+    private Button showUserTotalButton;
+    @FXML
+    private Button showGroupTotalButton;
+    @FXML
+    private Button showMessagesTotalButton;
+    @FXML
+    private Button showPositivePercentageButton;
 
     String userID;
 
@@ -45,6 +57,8 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Composite root = new Composite(new TreeItem<>("Root", new ImageView(new Image("C:\\Users\\nick\\IdeaProjects\\MiniTwitter\\src\\app\\folder.png"))));
+
+        GroupDatabaseSingleton.getInstance().getGroupList().add("Root");
 
         TreeItem<String> rootTreeItem = root.getId();
 
@@ -121,7 +135,61 @@ public class Controller implements Initializable {
                 parent = (Composite) treeItemComponentMap.get(treeItem.getParent());
             }
         }
+    }
 
+    public void showUserTotal(ActionEvent event) {
+        AnalysisVisitor analysisVisitor = new AnalysisVisitor();
+        UserTotal userTotal = new UserTotal();
 
+        Text text = new Text(10, 20,"User Total: " + userTotal.accept(analysisVisitor));
+        text.setFont(new Font(20));
+        Scene scene = new Scene(new Group(text));
+        Stage stage = new Stage();
+        stage.setTitle("User Total");
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
+    }
+
+    public void showGroupTotal(ActionEvent event) {
+        AnalysisVisitor analysisVisitor = new AnalysisVisitor();
+        GroupTotal groupTotal = new GroupTotal();
+
+        Text text = new Text(10, 20, "Group Total: " + groupTotal.accept(analysisVisitor));
+        text.setFont(new Font(20));
+        Scene scene = new Scene(new Group(text));
+        Stage stage = new Stage();
+        stage.setTitle("Group Total");
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
+    }
+
+    public void showMessagesTotal(ActionEvent event) {
+        AnalysisVisitor analysisVisitor = new AnalysisVisitor();
+        MessagesTotal messagesTotal = new MessagesTotal();
+
+        Text text = new Text(10, 20, "Messages Total: " + messagesTotal.accept(analysisVisitor));
+        text.setFont(new Font(20));
+        Scene scene = new Scene(new Group(text));
+        Stage stage = new Stage();
+        stage.setTitle("Messages Total");
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
+    }
+
+    public void showPositivePercentage(ActionEvent event) {
+        AnalysisVisitor analysisVisitor = new AnalysisVisitor();
+        PositivePercentage positivePercentage = new PositivePercentage();
+
+        Text text = new Text(10, 20, "Positive Percentage: " + positivePercentage.accept(analysisVisitor) + "%");
+        text.setFont(new Font(20));
+        Scene scene = new Scene(new Group(text));
+        Stage stage = new Stage();
+        stage.setTitle("Positive Percentage");
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
     }
 }
