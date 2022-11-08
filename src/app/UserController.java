@@ -46,8 +46,10 @@ public class UserController {
 
         currentUser.setNewsFeedListView(this.newsFeedListView);
 
-//        System.out.println("newsFeedListView in UserController: " + currentUser.getNewsFeedListView());
+        String tweet = currentUserId + ": " + tweetMessageTextArea.getText();
 
-        currentUser.postTweet(currentUserId + ": " + tweetMessageTextArea.getText());
+        MessageDatabaseSingleton.getInstance().getMessageList().add(tweet);
+
+        currentUser.postTweet(tweet);
     }
 }

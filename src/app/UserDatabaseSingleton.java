@@ -6,14 +6,14 @@ import java.util.Map;
 public class UserDatabaseSingleton {
     private static UserDatabaseSingleton instance;
 
-    public Map<String, User> getUserMap() {
-        return userMap;
-    }
-
     private Map<String, User> userMap;
 
     private UserDatabaseSingleton() {
         userMap = new HashMap<>();
+    }
+
+    public Map<String, User> getUserMap() {
+        return userMap;
     }
 
     public static UserDatabaseSingleton getInstance() {

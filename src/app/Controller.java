@@ -90,6 +90,8 @@ public class Controller implements Initializable {
 
         parent.getId();
 
+        GroupDatabaseSingleton.getInstance().getGroupList().add(groupID);
+
         System.out.println(groupID + " added");
     }
 
@@ -115,6 +117,8 @@ public class Controller implements Initializable {
 
             if(treeNode instanceof Composite) {
                 parent = (Composite) treeNode;
+            } else {
+                parent = (Composite) treeItemComponentMap.get(treeItem.getParent());
             }
         }
 
