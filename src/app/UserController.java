@@ -32,8 +32,6 @@ public class UserController {
 
         currentUser.followUser(otherUser);
 
-        currentUser.getFollowing().add(otherUser);
-
         currentlyFollowingListView.getItems().add(otherUser.getUserId());
 
         System.out.println("following " + userIdTextField.getText());
@@ -47,8 +45,6 @@ public class UserController {
         currentUser.setNewsFeedListView(this.newsFeedListView);
 
         String tweet = currentUserId + ": " + tweetMessageTextArea.getText();
-
-        MessageDatabaseSingleton.getInstance().getMessageList().add(tweet);
 
         currentUser.postTweet(tweet);
     }
