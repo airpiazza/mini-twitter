@@ -7,7 +7,7 @@ public class AnalysisVisitor implements Visitor {
 
     // initialize positiveWords array with selected positive words
     public AnalysisVisitor() {
-        this.positiveWords = new String[] {"good", "great", "excellent", "amazing", "awesome", "nice", "beautiful"};
+        this.positiveWords = new String[] {"good", "great", "excellent", "amazing", "awesome", "nice", "beautiful", "cool"};
     }
 
     // returns total number of users
