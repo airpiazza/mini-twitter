@@ -1,5 +1,6 @@
 package app;
 
+// concrete observer that implements Observer
 public class ConcreteObserver implements Observer {
     private String latestTweet;
 
@@ -7,6 +8,7 @@ public class ConcreteObserver implements Observer {
 
     private Subject following;
 
+    // this concrete observer subscribes to the subject while keeping track of subject and user ID
     public ConcreteObserver(String userId, Subject otherUser) {
         this.following = otherUser;
 
@@ -20,6 +22,7 @@ public class ConcreteObserver implements Observer {
         return userId;
     }
 
+    // adds latest tweet from this subject to the user's newsfeed
     @Override
     public void update(String latestTweet) {
         this.latestTweet = latestTweet;

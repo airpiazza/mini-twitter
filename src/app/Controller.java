@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+// class that handles user interactions with admin UI
 public class Controller implements Initializable {
     @FXML
     private TextField userIDTextField;
@@ -54,6 +55,7 @@ public class Controller implements Initializable {
 
     Composite parent;
 
+    // add the Root when the admin UI is opened
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Composite root = new Composite(new TreeItem<>("Root", new ImageView(new Image("C:\\Users\\nick\\IdeaProjects\\MiniTwitter\\src\\app\\folder.png"))));
@@ -71,6 +73,7 @@ public class Controller implements Initializable {
         treeView.setRoot(rootTreeItem);
     }
 
+    // add user when the Add User button is clicked
     public void addUser(ActionEvent event) {
         userID = userIDTextField.getText();
 
@@ -91,6 +94,7 @@ public class Controller implements Initializable {
         System.out.println(userID + " added");
     }
 
+    // add group when the Add Group button is clicked
     public void addGroup(ActionEvent event) {
         groupID = groupIDTextField.getText();
 
@@ -109,6 +113,7 @@ public class Controller implements Initializable {
         System.out.println(groupID + " added");
     }
 
+    // open the user's view when Open User View button is clicked
     public void openUserView(ActionEvent event) throws IOException {
         TreeItem <String> treeItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
 
@@ -121,6 +126,7 @@ public class Controller implements Initializable {
         }
     }
 
+    // handles when a tree item is clicked
     public void itemClicked() {
         TreeItem <String> treeItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
 
@@ -137,6 +143,7 @@ public class Controller implements Initializable {
         }
     }
 
+    // display dialog of total users when the Show User Total button is clicked
     public void showUserTotal(ActionEvent event) {
         AnalysisVisitor analysisVisitor = new AnalysisVisitor();
         UserTotal userTotal = new UserTotal();
@@ -151,6 +158,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    // show dialog with total number of groups when the Show Group Total button is clicked
     public void showGroupTotal(ActionEvent event) {
         AnalysisVisitor analysisVisitor = new AnalysisVisitor();
         GroupTotal groupTotal = new GroupTotal();
@@ -165,6 +173,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    // show dialog with total number of messages when the Show Messages Total button is clicked
     public void showMessagesTotal(ActionEvent event) {
         AnalysisVisitor analysisVisitor = new AnalysisVisitor();
         MessagesTotal messagesTotal = new MessagesTotal();
@@ -179,6 +188,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    // show dialog of positive percentage when the Show Positive Percentage button is clicked
     public void showPositivePercentage(ActionEvent event) {
         AnalysisVisitor analysisVisitor = new AnalysisVisitor();
         PositivePercentage positivePercentage = new PositivePercentage();

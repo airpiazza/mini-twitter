@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+// class that handles user interactions with the user window
 public class UserController {
     @FXML
     private TextField userIdTextField;
@@ -23,6 +24,7 @@ public class UserController {
     @FXML
     private ListView newsFeedListView;
 
+    // handles user clicking follow user
     public void followUser(ActionEvent event) {
         String currentUserId = ((Stage) ((Node) event.getSource()).getScene().getWindow()).getTitle();
         User currentUser = UserDatabaseSingleton.getInstance().getUserMap().get(currentUserId);
@@ -38,6 +40,7 @@ public class UserController {
         System.out.println("current user: " + currentUserId);
     }
 
+    // handles user clicking post tweet
     public void postTweet(ActionEvent event) {
         String currentUserId = ((Stage) ((Node) event.getSource()).getScene().getWindow()).getTitle();
         User currentUser = UserDatabaseSingleton.getInstance().getUserMap().get(currentUserId);

@@ -3,6 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
+// singleton to keep track of total groups in the Mini Twitter
 public class GroupDatabaseSingleton {
     private static GroupDatabaseSingleton instance;
 

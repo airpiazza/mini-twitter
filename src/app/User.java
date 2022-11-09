@@ -5,6 +5,7 @@ import javafx.scene.control.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+// User class keeps track of individual user data and handles a Twitter user's actions
 public class User {
     private ConcreteSubject subject;
 
@@ -20,6 +21,7 @@ public class User {
 
     private List<String> newsFeedList;
 
+    // have each user essentially "follow" his or herself so his or her tweets end up in his or her own news feed
     public User(String userId) {
         this.subject = new ConcreteSubject(userId);
         followers = new ArrayList<>();
@@ -60,6 +62,7 @@ public class User {
         this.newsFeedList = newsFeedList;
     }
 
+    // handles user following another user
     public void followUser(User otherUser) {
         Observer observer = new ConcreteObserver(this.getUserId(), otherUser.getSubject());
         otherUser.getFollowers().add(this.getUserId());
@@ -69,6 +72,7 @@ public class User {
         }
     }
 
+    // handles user posting a tweet
     public void postTweet(String newTweet) {
         this.subject.setLatestTweet(newTweet);
     }

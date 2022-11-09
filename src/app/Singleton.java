@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
+// this singleton represents the admin UI
 public class Singleton {
     private static Singleton instance = null;
 

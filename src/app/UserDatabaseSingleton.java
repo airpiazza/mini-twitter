@@ -3,6 +3,7 @@ package app;
 import java.util.HashMap;
 import java.util.Map;
 
+// singleton for keeping track of all the users in Mini Twitter
 public class UserDatabaseSingleton {
     private static UserDatabaseSingleton instance;
 
