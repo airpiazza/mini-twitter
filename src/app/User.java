@@ -17,9 +17,14 @@ public class User {
 
     private String userId;
 
+    private long creationTime;
+
     private ListView<String> newsFeedListView;
 
     private List<String> newsFeedList;
+
+    private long lastUpdateTime;
+
 
     // have each user essentially "follow" his or herself so his or her tweets end up in his or her own news feed
     public User(String userId) {
@@ -29,14 +34,13 @@ public class User {
         observers = new ArrayList<>();
         newsFeedList = new ArrayList<>();
         this.userId = userId;
-
+        this.creationTime = System.currentTimeMillis();
         this.followUser(this);
     }
 
     public Subject getSubject() {
         return subject;
     }
-
     public String getUserId() {
         return userId;
     }
@@ -47,6 +51,10 @@ public class User {
 
     public List<String> getFollowing() {
         return following;
+    }
+
+    public long getCreationTime() {
+        return creationTime;
     }
 
     public ListView<String> getNewsFeedListView() {
@@ -60,6 +68,14 @@ public class User {
 
     public void setNewsFeedList(List<String> newsFeedList) {
         this.newsFeedList = newsFeedList;
+    }
+
+    public long getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(long lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 
     // handles user following another user

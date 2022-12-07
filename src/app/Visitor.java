@@ -6,4 +6,6 @@ public interface Visitor {
     public int visit(GroupTotal groups);
     public int visit(MessagesTotal messages);
     public int visit(PositivePercentage positivity);
+    public int visit(GroupIdValidation validation);
+    public int visit(LastUpdated lastUpdated);
 }

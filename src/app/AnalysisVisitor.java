@@ -1,5 +1,11 @@
 package app;
 
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 // AnalysisVisitor implements Visitor and uses database singletons in the visit methods
 public class AnalysisVisitor implements Visitor {
 
@@ -45,5 +51,26 @@ public class AnalysisVisitor implements Visitor {
         System.out.println("Total messages: " + MessageDatabaseSingleton.getInstance().getMessageList().size());
 
         return (int) Math.round((positiveMessages/MessageDatabaseSingleton.getInstance().getMessageList().size()) * 100);
+    }
+
+    @Override
+    public int visit(GroupIdValidation validation) {
+        HashSet<String> idSet = new HashSet<>();
+        ArrayList<String> ids = new ArrayList<>();
+        ids.addAll(UserDatabaseSingleton.getInstance().getUserIds());
+        ids.addAll(GroupDatabaseSingleton.getInstance().getGroupList());
+
+        for(String id : ids) {
+            if(id.contains(" ") || !idSet.add(id)) {
+                return 0;
+            }
+        }
+
+        return 1;
+    }
+
+    @Override
+    public int visit(LastUpdated lastUpdated) {
+        return UserDatabaseSingleton.getInstance().getLastUpdatedUserList().size() - 1;
     }
 }

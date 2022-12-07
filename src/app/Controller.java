@@ -46,6 +46,10 @@ public class Controller implements Initializable {
     private Button showMessagesTotalButton;
     @FXML
     private Button showPositivePercentageButton;
+    @FXML
+    private Button verifyGroupUserIdButton;
+    @FXML
+    private Button findLastUpdatedUserButton;
 
     String userID;
 
@@ -81,6 +85,8 @@ public class Controller implements Initializable {
 
         UserDatabaseSingleton.getInstance().getUserMap().put(userID, newUser);
 
+        UserDatabaseSingleton.getInstance().getUserIds().add(userID);
+
         TreeItem<String> userItem = new TreeItem<>(userID);
 
         Component user = new Leaf(userItem);
@@ -110,6 +116,8 @@ public class Controller implements Initializable {
 
         GroupDatabaseSingleton.getInstance().getGroupList().add(groupID);
 
+        app.Group groupObject = new app.Group(groupID);
+
         System.out.println(groupID + " added");
     }
 
@@ -123,6 +131,8 @@ public class Controller implements Initializable {
             userStage.setTitle(treeItem.getValue());
             userStage.setScene(new Scene(root));
             userStage.show();
+            User currentUser = UserDatabaseSingleton.getInstance().getUserMap().get(treeItem.getValue());
+            System.out.println(currentUser.getUserId() + " created at " + currentUser.getCreationTime());
         }
     }
 
@@ -201,5 +211,24 @@ public class Controller implements Initializable {
         stage.setScene(scene);
         stage.sizeToScene();
         stage.show();
+    }
+
+    public void verifyGroupUserId(ActionEvent event) {
+        AnalysisVisitor analysisVisitor = new AnalysisVisitor();
+        GroupIdValidation validation = new GroupIdValidation();
+        Text text = new Text(10, 20, "Are the IDs valid? " + (validation.accept(analysisVisitor) == 1 ? "yes" : "no"));
+        text.setFont(new Font(20));
+        Scene scene = new Scene(new Group(text));
+        Stage stage = new Stage();
+        stage.setTitle("Group/User ID Validation");
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
+    }
+
+    public void findLastUpdatedUser(ActionEvent event) {
+        AnalysisVisitor analysisVisitor = new AnalysisVisitor();
+        LastUpdated lastUpdated = new LastUpdated();
+        System.out.println("Last updated user: " + UserDatabaseSingleton.getInstance().getLastUpdatedUserList().get(lastUpdated.accept(analysisVisitor)).getUserId());
     }
 }

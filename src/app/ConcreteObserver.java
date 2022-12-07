@@ -29,6 +29,9 @@ public class ConcreteObserver implements Observer {
 
         User thisUser = UserDatabaseSingleton.getInstance().getUserMap().get(this.getUserId());
         thisUser.getNewsFeedListView().getItems().add(this.latestTweet);
+        thisUser.setLastUpdateTime(System.currentTimeMillis());
+        System.out.println(thisUser.getUserId() + " last updated at " + thisUser.getLastUpdateTime());
+        UserDatabaseSingleton.getInstance().getLastUpdatedUserList().add(thisUser);
         MessageDatabaseSingleton.getInstance().getMessageList().add(this.latestTweet);
     }
 }

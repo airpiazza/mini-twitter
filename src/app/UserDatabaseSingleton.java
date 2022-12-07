@@ -1,5 +1,6 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,12 +10,24 @@ public class UserDatabaseSingleton {
 
     private Map<String, User> userMap;
 
+    private ArrayList<String> userIds = new ArrayList<>();
+
+    private ArrayList<User> lastUpdatedUserList = new ArrayList<>();
+
     private UserDatabaseSingleton() {
         userMap = new HashMap<>();
     }
 
     public Map<String, User> getUserMap() {
         return userMap;
+    }
+
+    public ArrayList<String> getUserIds() {
+        return userIds;
+    }
+
+    public ArrayList<User> getLastUpdatedUserList() {
+        return lastUpdatedUserList;
     }
 
     public static UserDatabaseSingleton getInstance() {

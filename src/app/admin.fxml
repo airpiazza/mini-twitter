@@ -13,11 +13,13 @@
       <TextField fx:id="groupIDTextField" layoutX="300.0" layoutY="119.0" promptText="Group ID" />
       <Button fx:id="addUserButton" layoutX="491.0" layoutY="61.0" mnemonicParsing="false" onAction="#addUser" text="Add User" />
       <Button fx:id="addGroupButton" layoutX="491.0" layoutY="119.0" mnemonicParsing="false" onAction="#addGroup" text="Add Group" />
-      <Button fx:id="showUserTotalButton" layoutX="291.0" layoutY="300.0" mnemonicParsing="false" onAction="#showUserTotal" text="Show User Total" />
-      <Button fx:id="showGroupTotalButton" layoutX="434.0" layoutY="300.0" mnemonicParsing="false" onAction="#showGroupTotal" text="Show Group Total" />
-      <Button fx:id="showMessagesTotalButton" layoutX="291.0" layoutY="345.0" mnemonicParsing="false" onAction="#showMessagesTotal" text="Show Messages Total" />
-      <Button fx:id="showPositivePercentageButton" layoutX="434.0" layoutY="345.0" mnemonicParsing="false" onAction="#showPositivePercentage" text="Show Positive Percentage" />
+      <Button fx:id="showUserTotalButton" layoutX="291.0" layoutY="275.0" mnemonicParsing="false" onAction="#showUserTotal" text="Show User Total" />
+      <Button fx:id="showGroupTotalButton" layoutX="435.0" layoutY="275.0" mnemonicParsing="false" onAction="#showGroupTotal" text="Show Group Total" />
+      <Button fx:id="showMessagesTotalButton" layoutX="291.0" layoutY="320.0" mnemonicParsing="false" onAction="#showMessagesTotal" text="Show Messages Total" />
+      <Button fx:id="showPositivePercentageButton" layoutX="435.0" layoutY="320.0" mnemonicParsing="false" onAction="#showPositivePercentage" text="Show Positive Percentage" />
       <Button fx:id="openUserViewButton" layoutX="491.0" layoutY="183.0" mnemonicParsing="false" onAction="#openUserView" text="Open User View" />
       <Label layoutX="31.0" layoutY="30.0" text="Tree View" />
+      <Button fx:id="verifyGroupUserIdButton" layoutX="291.0" layoutY="358.0" mnemonicParsing="false" onAction="#verifyGroupUserId" text="Verify User/Group ID" />
+      <Button fx:id="findLastUpdatedUserButton" layoutX="435.0" layoutY="358.0" mnemonicParsing="false" onAction="#findLastUpdatedUser" text="Last Updated User" />
    </children>
 </AnchorPane>
